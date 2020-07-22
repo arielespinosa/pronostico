@@ -1,0 +1,18 @@
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+<!-- Modal Emitir Nota Meteorológica -->
+<form id='delete_element' role="form" method="POST" class="" action="">
+  {% csrf_token %}
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Eliminar {{ object }}</h4>
+  </div>
+  <div class="modal-body">
+    <p>¿Esta seguro que desea eliminar el/la <strong>{{ object.no }}</strong>?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="submit-btn btn btn-danger" data-dismiss="modal">Eliminar</button>
+  </div>   
+</form>
+

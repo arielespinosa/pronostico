@@ -1,0 +1,130 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es-es" class="app">
+
+<head>
+  <meta charset="utf-8"/>
+  <title>{% block titulo %}AdminCNP{% endblock %}</title>
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/> 
+  <!-- Basics CSS style block -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css"/> 
+  <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}" type="text/css"/>
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css"/>
+  <link rel="stylesheet" href="{% static 'css/font.css' %}" type="text/css"/>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css"/>
+  <link rel="stylesheet" href="{% static 'js/amaranjs/css/animate.min.css' %}" type="text/css"/>
+  <link rel="stylesheet" href="{% static 'js/amaranjs/css/amaran.min.css' %}" type="text/css"/>
+
+  <style type="text/css">
+    .asteriskField {
+      display: none;
+    }
+
+    #menu {
+      left: 20%;
+    }
+    .nav-primary {
+      border-bottom: none;
+    }
+
+    .nav .sc {
+      margin-left: 10px;
+    }
+
+    .nav-primary ul.nav > li > a {
+      border-top: none;
+    }
+
+    .nav-primary li > a > svg {
+      border-right: none;
+      margin-right: 10px;
+    }
+
+  </style>
+  <!--  Basics CSS style end block -->
+  {% block css %}{% endblock %}
+  <!--[if lt IE 9]>
+    <script src="{% static 'js/ie/html5shiv.js' %}"></script>
+    <script src="{% static 'js/ie/respond.min.js' %}"></script>
+    <script src="{% static 'js/ie/excanvas.js' %}"></script>
+  <![endif]-->
+</head>
+
+<body>   
+
+  <section class="vbox"> 
+
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content"></div>
+      </div>
+    </div>
+    <!-- Modal -->                  
+    <!-- HEADER SECTION -->
+    {% if not user.is_authenticated %}
+    <header class="bg-dark dk header navbar navbar-fixed-top-xs">
+      <div class="navbar-header aside-md">
+        <a href="#" class="navbar-brand" data-toggle="fullscreen"><img src="{% static 'images/logo.png' %}" class="m-r-sm">CNPAdmin</a>
+      </div>      
+    </header> 
+    {% else %}      
+       {% include 'navbar.html' %}
+    {% endif %} 
+
+    <!-- MAIN SECTION -->                                    
+    <section>
+      <section class="hbox stretch"> 
+
+        <!-- ASIDE NAVBAR SECTION -->               
+        {% if user.is_authenticated %}
+          {% include 'aside_navbar.html' %}
+        {% endif %} 
+        
+        <!-- DOC CONTENT SECTION --> 
+        <section id="content">
+          <section class="vbox">
+            {% block content_header %}{% endblock %}   
+
+            <section class="scrollable wrapper">
+              {% block content %}            
+                {% block content_wrapper %}
+                {% endblock %}
+                {% block content_footer %}{% endblock %}              
+              {% endblock %}
+            </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+        </section>
+
+         <!-- ASIDE CONTENT SECTION -->
+        {% block aside %}
+          <aside class="bg-light lter b-l aside-md hide" id="notes">
+            <div class="wrapper">Notification</div>
+          </aside>
+        {% endblock %}
+                          
+      </section>
+    </section>
+  </section>                    
+
+  
+
+  <!-- Basic JavaScript files block -->  
+  <script src="{% static 'js/jquery3.2.min.js' %}"></script>
+  <script src="{% static 'js/tether.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>  
+  <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+  <script src="{% static 'js/app.plugin.js' %}"></script>
+  <script src="{% static 'fontawesome/js/all.js' %}"></script>
+  <script src="{% static 'js/slimscroll/jquery.slimscroll.min.js' %}"></script>
+  <script src="{% static 'js/amaranjs/js/jquery.amaran.min.js' %}"></script>
+  <script src="{% static 'js/own/own.js' %}"></script>
+  <!-- Basic JavaScript files enblock -->
+
+  {% block javascript %}
+  {% endblock %}
+
+</body>
+</html>

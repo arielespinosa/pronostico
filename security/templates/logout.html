@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+  {% if messages %} 
+    {% for message in messages %} 
+      <div class="alert alert-{{ message.tags }}">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <i class="fa fa-ok-sign"></i><strong>{{ message }}</strong>
+      </div>              
+    {% endfor %}
+  {% endif %}   
+  <div class="container aside-xxl" style="padding-top: 10%">           
+    <section class="panel panel-default bg-white m-t-lg">
+      <header class="panel-heading text-center">
+        <strong>Iniciar sesi&oacute;n</strong>
+      </header>
+      <a href="{% url 'login' %}" class="btn btn-default btn-block">Log in again</a>
+    </section>      
+  </div> 
+  
+{% endblock %}   

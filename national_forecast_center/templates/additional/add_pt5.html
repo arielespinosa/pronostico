@@ -1,0 +1,62 @@
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+
+<!-- Modal Emitir PT5 -->
+<form id="create_pth5" role="form" method="POST" class="" action="">
+  {% csrf_token %}
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Emitir PTH5</h4>
+  </div>
+  <div class="modal-body">
+    <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+      {% for error in form.non_field_errors %}
+        {{ error }}
+      {% endfor %}
+    </div>
+    <div class="form-group">      
+      {{ form.title|as_crispy_field}}
+    </div>
+    <div class="form-group">
+      {{ form.sinopsis|as_crispy_field }}     
+    </div>
+    <section class="panel panel-default">
+      <header class="panel-heading bg-light">
+        <ul class="nav nav-tabs nav-justified">
+          <li class="active"><a href="#day1" data-toggle="tab">D&iacute;a 1</a></li>
+          <li><a href="#day2" data-toggle="tab">D&iacute;a 2</a></li>
+          <li><a href="#day3" data-toggle="tab">D&iacute;a 3</a></li>
+          <li><a href="#day4" data-toggle="tab">D&iacute;a 4</a></li>
+          <li><a href="#day5" data-toggle="tab">D&iacute;a 4</a></li>
+        </ul>
+      </header>
+      <div class="panel-body">
+        <div class="tab-content">
+          <div class="tab-pane active" id="day1">{{ form.day1|as_crispy_field }}</div>
+          <div class="tab-pane" id="day2">{{ form.day2|as_crispy_field }}</div>
+          <div class="tab-pane" id="day3">{{ form.day3|as_crispy_field }}</div>
+          <div class="tab-pane" id="day4">{{ form.day4|as_crispy_field }}</div>
+          <div class="tab-pane" id="day5">{{ form.day5|as_crispy_field }}</div>
+        </div>
+      </div>
+    </section>
+    <div class="form-group">
+      {{ form.content|as_crispy_field }}     
+    </div>
+    <div class="form-group">
+      {{ form.notes|as_crispy_field }}     
+    </div>
+    <div class="form-group">
+      {{ form.author2|as_crispy_field }}     
+    </div>
+   
+   
+   
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+    <button type="button" class="submit-btn btn btn-primary">Emitir</button>
+  </div>      
+</form>
+

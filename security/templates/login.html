@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="container aside-xxl" style="padding-top: 10%">           
+    <section class="panel panel-default bg-white m-t-lg">
+      <header class="panel-heading text-center">
+        <strong>Iniciar sesi&oacute;n</strong>
+      </header>   
+      <form role="form" method="POST" class="panel-body wrapper-lg" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        {{ form|crispy }}           
+            
+        <a href="{% url 'password_reset' %}" class="pull-right m-t-xs"><small>Ha olvidado la contrase&ntilde;a?</small></a>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        <div class="line line-dashed"></div>
+        
+        <p class="text-center"><small>No tiene cuenta?</small>
+        <a href="{% url 'signup' %}" class="font-bold"> Crear una</a></p>
+      </form>
+    </section>      
+  </div> 
+{% endblock %}   
+
+
+{% block javascript %}
+
+{% endblock %}   

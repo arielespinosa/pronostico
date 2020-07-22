@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content %}
+
+<button id="1234" class="btn btn-info pull-right btn-sm">POST</button>
+
+
+  {% if messages %} 
+    {% for message in messages %} 
+      <div class="alert alert-{{ message.tags }}">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <i class="fa fa-ok-sign"></i><strong>{{ message }}</strong>
+      </div>              
+    {% endfor %}
+  {% endif %}   
+  <div class="container aside-xxl" style="padding-top: 10%">           
+    <section class="panel panel-default bg-white m-t-lg">
+      <header class="panel-heading text-center">
+        <strong>Iniciar sesi&oacute;n</strong>
+      </header>
+      <form id="my-ajax-form" role="form" method="post" action='.' data-url='/join/'>
+        {% csrf_token %}
+
+        {{ form|crispy }}           
+            
+        <a href="{% url 'password_reset' %}" class="pull-right m-t-xs"><small>Ha olvidado la contrase&ntilde;a?</small></a>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        <div class="line line-dashed"></div>
+        
+        <p class="text-center"><small>No tiene cuenta?</small>
+        <a href="{% url 'signup' %}" class="font-bold"> Crear una</a></p>
+      </form>
+    </section>      
+  </div> 
+
+
+
+<!-- Modal Emitir Aviso Especial -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+   <form role="form" method="POST" class="panel-body wrapper-lg" action="">
+    {% csrf_token %}
+      <div class="modal-content">      
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Emitir PTH5</h4>
+        </div>
+        <div class="modal-body">            
+          Bla...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Emitir</button>
+        </div>        
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}  
+
+
+{% block javascript %}
+<script>
+$(document).ready(function(){
+    var $myForm = $('#my-ajax-form')
+    $myForm.submit(function(event){
+        event.preventDefault()
+        var $formData = $(this).serialize()
+        var $endpoint = $myForm.attr('data-url') || window.location.href // or set your own url
+        $.ajax({
+            method: "POST",
+            url: $endpoint,
+            data: $formData,
+            success: handleFormSuccess,
+            error: handleFormError,
+        })
+
+        function handleFormSuccess(data, textStatus, jqXHR){
+          console.log(data)
+          console.log(textStatus)
+          console.log(jqXHR)
+          $myForm[0].reset(); // reset form data
+        }
+
+        function handleFormError(jqXHR, textStatus, errorThrown){
+          console.log(jqXHR)
+          console.log(textStatus)
+          console.log(errorThrown)
+        }
+    })
+
+
+})
+</script>
+
+{% endblock %} 
+
+{% block javascript2 %}
+<script>
+$(document).ready(function(){
+    var $myForm = $('#my-ajax-form')
+    $myForm.submit(function(event){
+        event.preventDefault()
+        var $formData = $(this).serialize()
+        var $thisURL = $myForm.attr('data-url') || window.location.href // or set your own url
+        $.ajax({
+            method: "POST",
+            url: $thisURL,
+            data: $formData,
+            success: handleFormSuccess,
+            error: handleFormError,
+        })
+    })
+
+    function handleFormSuccess(data, textStatus, jqXHR){
+        alert(data)
+        console.log(data)
+        console.log(textStatus)
+        console.log(jqXHR)
+        $myForm.reset(); // reset form data
+    }
+
+    function handleFormError(jqXHR, textStatus, errorThrown){
+        console.log(jqXHR)
+        console.log(textStatus)
+        console.log(errorThrown)
+    }
+})
+</script>
+
+
+{% endblock %}
+

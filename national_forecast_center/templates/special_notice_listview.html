@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content_header %}
+{% include 'additional/header.html' %}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'js/calendar/bootstrap_calendar.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'js/datatables/datatables.css' %}" type="text/css">
+{% endblock %}
+
+{% block content_wrapper %}
+<!-- Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content form">
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+
+<div class="m-b-md">
+  <h3 class="m-b-none">Pron&oacute;stico</h3>
+  <small>Notas informativas, Avisos, Alertas, Partes Emitidos 2</small>
+</div>
+
+<div class="row">
+  <!-- LEFT COLUMN-->
+    <div class="col-md-8">
+  <section class="panel panel-default">
+                <header class="panel-heading">
+                  DataTables 
+                  <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i> 
+                </header>
+                <div class="table-responsive">
+                  <table class="table table-striped m-b-none" data-ride="datatables">
+                    <thead>
+                      <tr>
+                        <th width="20%">Rendering engine</th>
+                        <th width="25%">Browser</th>
+                        <th width="25%">Platform(s)</th>
+                        <th width="15%">Engine version</th>
+                        <th width="15%">CSS grade</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+    </div>
+
+    <!-- RIGTH COLUMN-->
+    <div class="col-md-4">
+      <section class="panel b-light">
+        <header class="panel-heading bg-primary dker no-border"><strong>Calendar</strong></header>
+        <div id="calendar" class="bg-primary m-l-n-xxs m-r-n-xxs"><div class="calendar" id="cal_1zzd"><table class="table header"><tbody><tr></tr></tbody><td><i class="fa fa-arrow-left"></i></td><td colspan="5" class="year span6"><div class="visualmonthyear">July 2019</div></td><td><i class="fa fa-arrow-right"></i></td></table><table class="daysmonth table table"><tbody><tr class="week_days"><td class="first">S</td><td>M</td><td>T</td><td>W</td><td>T</td><td>F</td><td class="last">S</td></tr><tr><td class="invalid first"></td><td id="cal_1zzd_1_7_2019"><a>1</a></td><td id="cal_1zzd_2_7_2019"><a>2</a></td><td id="cal_1zzd_3_7_2019"><a>3</a></td><td id="cal_1zzd_4_7_2019"><a>4</a></td><td id="cal_1zzd_5_7_2019" class="event event_popover"><a data-original-title="Meet a friend" data-trigger="manual" class="manual_popover" rel="popover" data-content="Contents here">5</a><span style="background: rgb(251, 107, 91);"></span></td><td id="cal_1zzd_6_7_2019" class="last"><a>6</a></td></tr><tr><td id="cal_1zzd_7_7_2019" class="first"><a>7</a></td><td id="cal_1zzd_8_7_2019" class="event event_popover"><a data-original-title="Kick off meeting!" data-trigger="manual" class="manual_popover" rel="popover" data-content="Have a kick off meeting with .inc company">8</a><span style="background: rgb(255, 186, 77);"></span></td><td id="cal_1zzd_9_7_2019"><a>9</a></td><td id="cal_1zzd_10_7_2019"><a>10</a></td><td id="cal_1zzd_11_7_2019"><a>11</a></td><td id="cal_1zzd_12_7_2019"><a>12</a></td><td id="cal_1zzd_13_7_2019" class="last"><a>13</a></td></tr><tr><td id="cal_1zzd_14_7_2019" class="first"><a>14</a></td><td id="cal_1zzd_15_7_2019"><a>15</a></td><td id="cal_1zzd_16_7_2019"><a>16</a></td><td id="cal_1zzd_17_7_2019"><a>17</a></td><td id="cal_1zzd_18_7_2019" class="event event_popover"><a data-original-title="Milestone release" data-trigger="manual" class="manual_popover" rel="popover" data-content="Contents here">18</a><span style="background: rgb(255, 186, 77);"></span></td><td id="cal_1zzd_19_7_2019" class="event event_tooltip"><a data-original-title="A link" href="https://github.com/blog/category/drinkup" rel="tooltip">19</a><span style="background: rgb(204, 204, 204);"></span></td><td id="cal_1zzd_20_7_2019" class="last"><a>20</a></td></tr><tr><td id="cal_1zzd_21_7_2019" class="first"><a>21</a></td><td id="cal_1zzd_22_7_2019"><a>22</a></td><td id="cal_1zzd_23_7_2019"><a>23</a></td><td id="cal_1zzd_24_7_2019"><a>24</a></td><td id="cal_1zzd_25_7_2019"><a>25</a></td><td id="cal_1zzd_26_7_2019"><a>26</a></td><td id="cal_1zzd_27_7_2019" class="last"><a>27</a></td></tr><tr><td id="cal_1zzd_28_7_2019" class="first"><a>28</a></td><td id="cal_1zzd_29_7_2019"><a>29</a></td><td id="cal_1zzd_30_7_2019"><a>30</a></td><td id="cal_1zzd_31_7_2019"><a>31</a></td><td class="invalid"></td><td class="invalid"></td><td class="invalid last"></td></tr></tbody></table></div></div>
+        <div class="list-group">
+          <a href="#" class="list-group-item text-ellipsis">
+            <span class="badge bg-danger">7:30</span> 
+            Meet a friend
+          </a>
+          <a href="#" class="list-group-item text-ellipsis"> 
+            <span class="badge bg-success">9:30</span> 
+            Have a kick off meeting with .inc company
+          </a>
+          <a href="#" class="list-group-item text-ellipsis">
+            <span class="badge bg-light">19:30</span>
+            Milestone release
+          </a>
+        </div>
+      </section>                  
+    </div>
+  </div>
+<!--
+<section class="panel panel-default">
+  <div class="row m-l-none m-r-none bg-light lter">
+    <div class="col-sm-6 col-md-3 padder-v b-r b-light">
+      <span class="fa-stack fa-2x pull-left m-r-sm">
+        <i class="fa fa-circle fa-stack-2x text-info"></i>
+        <i class="fa fa-male fa-stack-1x text-white"></i>
+      </span>
+      <a class="clear" href="#">
+        <span class="h3 block m-t-xs"><strong>52,000</strong></span>
+        <small class="text-muted text-uc">New robots</small>
+      </a>
+    </div>
+    <div class="col-sm-6 col-md-3 padder-v b-r b-light lt">
+      <span class="fa-stack fa-2x pull-left m-r-sm">
+        <i class="fa fa-circle fa-stack-2x text-warning"></i>
+        <i class="fa fa-bug fa-stack-1x text-white"></i>
+        <span class="easypiechart pos-abt easyPieChart" data-percent="100" data-line-width="4" data-track-color="#fff" data-scale-color="false" data-size="50" data-line-cap="butt" data-animate="2000" data-target="#bugs" data-update="3000" style="width: 50px; height: 50px; line-height: 50px;"><canvas width="56" height="56" style="width: 50px; height: 50px;"></canvas></span>
+      </span>
+      <a class="clear" href="#">
+        <span class="h3 block m-t-xs"><strong id="bugs">1468</strong></span>
+        <small class="text-muted text-uc">Bugs intruded</small>
+      </a>
+    </div>
+    <div class="col-sm-6 col-md-3 padder-v b-r b-light">                     
+      <span class="fa-stack fa-2x pull-left m-r-sm">
+        <i class="fa fa-circle fa-stack-2x text-danger"></i>
+        <i class="fa fa-fire-extinguisher fa-stack-1x text-white"></i>
+        <span class="easypiechart pos-abt easyPieChart" data-percent="100" data-line-width="4" data-track-color="#f5f5f5" data-scale-color="false" data-size="50" data-line-cap="butt" data-animate="3000" data-target="#firers" data-update="5000" style="width: 50px; height: 50px; line-height: 50px;"><canvas width="56" height="56" style="width: 50px; height: 50px;"></canvas></span>
+      </span>
+      <a class="clear" href="#">
+        <span class="h3 block m-t-xs"><strong id="firers">959</strong></span>
+        <small class="text-muted text-uc">Extinguishers ready</small>
+      </a>
+    </div>
+    <div class="col-sm-6 col-md-3 padder-v b-r b-light lt">
+      <span class="fa-stack fa-2x pull-left m-r-sm">
+        <i class="fa fa-circle fa-stack-2x icon-muted"></i>
+        <i class="fa fa-clock-o fa-stack-1x text-white"></i>
+      </span>
+      <a class="clear" href="#">
+        <span class="h3 block m-t-xs"><strong>31:50</strong></span>
+        <small class="text-muted text-uc">Left to exit</small>
+      </a>
+    </div>
+  </div>
+</section>
+-->
+
+
+{% endblock %}
+
+{% block content_footer %}
+
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/data/datatables.json' %}"></script>
+<script src="{% static 'js/calendar/bootstrap_calendar.js' %}"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+      $("#create_special_notice").modalForm({
+          formURL: "{% url 'create_special_notice' %}",
+      });
+
+      $("#create_meteorological_notice").modalForm({
+        formURL: "{% url 'create_meteorological_notice' %}",
+      });
+
+      $("#create_pth5").modalForm({
+        formURL: "{% url 'create_pth5' %}",
+      });
+
+
+      $("#create_pthoy").modalForm({
+        formURL: "{% url 'create_pthoy' %}",
+      });
+
+
+      $("#create_ptm").modalForm({
+        formURL: "{% url 'create_ptm' %}",
+      });
+
+
+      $("#create_ptrd").modalForm({
+        formURL: "{% url 'create_ptrd' %}",
+      });
+
+
+      $("#create_ptt").modalForm({
+        formURL: "{% url 'create_ptt' %}",
+      });
+
+  });
+
+</script>
+<!--
+<script src="{% static 'js/own/modals.js' %}"></script>
+-->
+
+{% endblock %}

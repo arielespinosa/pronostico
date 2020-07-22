@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="container aside-xxl" style="padding-top: 10%" >
+    <section class="panel panel-default">
+      <header class="panel-heading">
+        <span class="h4">Crear perfil</span>
+      </header>
+      <div class="panel-body">    
+        <form role="form" data-validate="parsley" method="POST" action="{% url 'signup' %}">
+          {% csrf_token %} 
+          <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+            {% for error in form.non_field_errors %}
+              {{ error }}
+            {% endfor %}
+          </div>              
+          {{ form|crispy }}
+        <div class="line"></div>
+        <label>                  
+          Estoy de acuerdo con los <strong><a href="#">Terminos de Uso</a></strong>
+        </label>          
+      </div>
+      <footer class="panel-footer bg-light lter">
+        <button id="btn_signup" type="submit" class="btn btn-primary btn-s-xs text-bold">CREAR USUARIO</button>                
+        <a href="{% url 'login' %}" class="pull-right m-t-xs btn btn-default text-right">ATRAS</a>
+      </footer>
+      </form>
+    </section>
+  </div> 
+{% endblock %}   

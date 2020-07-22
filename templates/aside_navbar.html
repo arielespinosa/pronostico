@@ -1,0 +1,48 @@
+<aside class="bg-dark dk aside-md hidden-print" id="nav">
+  <section class="vbox">
+    <header class="header bg-primary lter text-center clearfix">
+      <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-dark btn-icon" title="New project"><i class="fa fa-plus"></i></button>
+        <div class="btn-group hidden-nav-xs">
+          <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+            Switch Project
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu text-left">
+            <li><a href="#">Project</a></li>
+            <li><a href="#">Another Project</a></li>
+            <li><a href="#">More Projects</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="w-f scrollable">
+      <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333">
+        <nav class="nav-primary hidden-xs">
+          <ul class="nav">    
+            <li>
+              <a href="{% url 'forecast' %}">
+                <i class="fa fa-cloud-sun-rain icon"></i>
+                <span>Pron&oacute;stico</span>
+              </a> 
+            </li>        
+            <li>
+              <a href="#">
+                <i class="fa fa-file-alt icon"></i>
+                <span style="padding-left: 6px;"> Documentos</span>
+              </a>         
+            </li>           
+            <li>
+              <a href="{% url 'configuration:users' %}">
+               <i class="fa fa-tools"></i>
+                <span>Configuraci&oacute;n</span>
+              </a> 
+            </li>            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section> 
+</aside>
+
+

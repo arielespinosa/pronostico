@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content_header %}
+{% endblock %}
+
+{% block css %}
+
+<style type="text/css">
+  .pagination > li > a, .pagination > li > span {
+    color: #717171;
+    font-weight: bold;
+  }
+
+  .pagination > li > a:hover{
+    color: #333;
+    font-weight: bold;
+  }
+
+  .wrapper{
+    padding: 0px;
+  }
+
+
+</style>
+
+{% endblock %}
+
+{% block content_wrapper %}
+
+<section class="hbox stretch">
+  <aside class="aside-lg bg-light lter b-r">
+    <section class="vbox">
+      <section class="scrollable">
+        <div class="wrapper">
+          <header class="lg header">
+            <button class="btn btn-icon btn-default btn-sm pull-right"><i class="fa fa-plus"></i></button>
+            <button class="btn btn-icon btn-default btn-sm pull-right visible-xs m-r-xs" data-toggle="class:show" data-target="#mail-nav"><i class="fa fa-reorder"></i></button>
+            <p class="h4">Configuraci&oacute;n</p>
+          </header>
+          <section id="mail-nav" class="hidden-xs">
+            <ul class="nav nav-pills nav-stacked no-radius">
+              <li class="active">
+                <a href="#">
+                  
+                  <i class="fa fa-fw fa-lock"></i>&nbsp;&nbsp;&nbsp;
+                  Autenticaci&oacute;n y Permisos
+                </a>
+              </li>                   
+            </ul>              
+          </section>
+        </div>
+      </section>
+    </section>
+  </aside>
+    
+  <aside class="bg-white">
+    <section class="vbox">
+      {% include 'header_configuration.html' %}
+
+      <div class="panel-body">
+        <div class="col-md-4">
+          <section class="panel panel-default">
+            <header class="panel-heading font-bold">Grupos</header>
+        
+              <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                  <thead>
+                    <tr>
+                      <th width="20"><input type="checkbox"></th>
+                      <th class="th-sortable" data-toggle="class">Nombre
+                  
+                      </th>           
+                      <th width="80"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    {% for group in groups %}
+                    <tr>
+                      <td><input type="checkbox" name="post[]" value="{{ group.pk }}"></td>
+                      <td>{{ group.name }}</td>           
+                      <td class="text-right">
+                        <a class="view_special_notice" data-id=""><i class="fa fa-eye icon-muted"></i></a>
+                        <a id="group_{{ group.pk }}" class="update_special_notice" data-id=""><i class="fa fa-pen icon-muted "></i></a>             
+                        <a class="delete_special_notice" data-id=""><i class="fa fa-trash icon-muted "></i></a>                    
+                      </td>         
+                    </tr>
+                    {% endfor %}
+          
+                  </tbody>
+                </table>
+              </div>
+          
+          </section>
+        </div>
+
+      </div>
+    </section>
+  </aside>
+    
+</section>
+
+
+       
+
+{% endblock %}
+
+{% block content_footer %}
+
+{% endblock %}
+
+{% block javascript %}
+
+<script type="text/javascript">
+
+    $(document).ready(function() {    
+
+      // Create Functions
+      
+      $("#create_group").modalForm({
+        formURL: "{% url 'configuration:create_group' %}",
+      });
+
+      $("#create_meteorological_notice").modalForm({
+        formURL: "{% url 'create_meteorological_notice' %}",
+      });
+
+      $("#create_pt5").modalForm({
+        formURL: "{% url 'create_pt5' %}",
+      });
+
+
+      $("#create_pthoy").modalForm({
+        formURL: "{% url 'create_pthoy' %}",
+      });
+
+
+      $("#create_ptm").modalForm({
+        formURL: "{% url 'create_ptm' %}",
+      });
+
+
+      $("#create_ptrd").modalForm({
+        formURL: "{% url 'create_ptrd' %}",
+      });
+
+      $("#create_ptt").modalForm({
+        formURL: "{% url 'create_ptt' %}",
+      });
+
+      // Read Functions
+      $(".view_special_notice").each(function (){
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      $(".view_meteorological_notice").each(function (){
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      $(".view_ptr").each(function (){
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+      
+
+      $(".view_pt5").each(function (){
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+      
+
+      $(".view_ptm").each(function (){
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+      
+
+      $(".view_pthoy").each(function (){
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      $(".view_ptt").each(function (){
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+      
+      
+      
+      // Update Functions
+      $(".update_special_notice").each(function () {
+        $(this).modalForm({
+          formURL: $(this).data('id')        
+        });
+      });
+
+      $(".update_meteorological_notice").each(function () {
+        $(this).modalForm({
+          formURL: $(this).data('id')        
+        });
+      });
+
+      $(".update_ptrd").each(function () {
+        $(this).modalForm({
+          formURL: $(this).data('id')        
+        });
+      });
+
+      $(".update_ptt").each(function () {
+        $(this).modalForm({
+          formURL: $(this).data('id')        
+        });
+      });
+
+      $(".update_pthoy").each(function () {
+        $(this).modalForm({
+          formURL: $(this).data('id')        
+        });
+      });
+
+      $(".update_pt5").each(function () {
+        $(this).modalForm({
+          formURL: $(this).data('id')        
+        });
+      });
+
+      $(".update_ptm").each(function () {
+        $(this).modalForm({
+          formURL: $(this).data('id')        
+        });
+      });
+      
+      // Delete Functions
+      $(".delete_special_notice").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      $(".delete_meteorological_notice").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      $(".delete_pthoy").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      $(".delete_ptrd").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      $(".delete_pt5").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      $(".delete_ptm").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      $(".delete_ptt").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      
+
+
+      /*
+      $("#special_notice").on('click', function () {
+        alert("Hola");
+      });
+      */
+
+
+
+  });
+
+</script>
+
+{% endblock %}

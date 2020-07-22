@@ -1,0 +1,72 @@
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+<!-- Modal ver PTHOY -->
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <h4 class="modal-title" id="myModalLabel">PTHOY</h4>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><strong>Fecha:</strong></label>
+      <div class="col-sm-10">
+        <label style="cursor: text;" class="checkbox-inline">{{ object.emision_date }}</label>                            
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><strong>T&iacute;tulo:</strong></label>
+      <div class="col-sm-10">
+        <label style="cursor: text;" class="checkbox-inline">{{ object.title }}</label>                            
+      </div>            
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><strong>Contenido:</strong></label>
+      <div class="col-sm-10">
+        <label style="cursor: text;" class="checkbox-inline">{{ object.content }}</label>                            
+      </div>            
+    </div>
+    {% if object.interest_aditional_info %}
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><strong>Informaci&oacute;n adicional:</strong></label>
+      <div class="col-sm-10">
+        <label style="cursor: text;" class="checkbox-inline">{{ object.interest_aditional_info }}</label>                            
+      </div>            
+    </div>
+    {% endif %}
+    {% if object.notes %}
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><strong>Notas:</strong></label>
+      <div class="col-sm-10">
+        <label style="cursor: text;" class="checkbox-inline">{{ object.notes }}</label>                            
+      </div>            
+    </div>
+    {% endif %}
+    <div class="line line-dashed line-lg pull-in"></div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><strong>Emitido por:</strong></label>
+      <div class="col-sm-5">
+        <div class="media checkbox-inline">              
+          <div class="media-body">
+            <div><a href="#">{{ object.author1.sign_name }}</a></div>
+            <small class="text-muted">{{ object.author1.forecast_center }}</small>
+          </div>
+        </div>  
+      </div>         
+      {% if object.author2 %}  
+      <div class="col-sm-5">      
+        <div class="media checkbox-inline">              
+          <div class="media-body">
+            <div><a href="#">{{ object.author2.sign_name }}</a></div>
+            <small class="text-muted">{{ object.author2.forecast_center }}</small>
+          </div>
+        </div>   
+      </div>          
+      {% endif %}              
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+</div>      
+

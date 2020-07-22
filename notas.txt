@@ -1,0 +1,6 @@
+- Quitar las notas de los formularios y las clases. No son necesarias.
+- P5 no tiene título
+- La sprovincias pueden emitir AE locales. Cada uno son diferentes aunq sean al mismo fenómeno.
+- Cambiar título por fenómeno para los Avisos.
+- Poner en la tabla identificador a los nuevos, a los vistos y a los no vistos
+- Ordenar la tabla por los ultimos documentos emitidos.

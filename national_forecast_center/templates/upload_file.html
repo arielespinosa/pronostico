@@ -1,0 +1,10 @@
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+<!-- Cargar ficheros docx -->
+<form id='upload_docx_file' method="POST" enctype="multipart/form-data" action="{% url 'upload_docx_file' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button ttype="submit" id="upload" class="submit-btn btn btn-primary">Emitir</button>    
+</form>
+
