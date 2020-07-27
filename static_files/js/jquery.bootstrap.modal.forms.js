@@ -60,7 +60,7 @@ function message_success(data){
     };
 
     // Check if form.is_valid() & either show errors or submit it
-    var isFormValid = function (modalID, modalContent, modalForm, formURL, errorClass, submitBtn, elementID, callback) {
+    var isFormValid = function (modalID, modalContent, modalForm, formURL, errorClass, submitBtn, elementID) {
         
         $.ajax({
             type: $(modalForm).attr("method"),
@@ -79,7 +79,6 @@ function message_success(data){
                     // Reinstantiate click listener on submitBtn
                     ajaxSubmit(modalID, modalContent, modalForm, formURL, errorClass, submitBtn, elementID);
                 } else {
-                    console.log(response)
                     // Hide modal form                    
                     $(modalID).modal("hide");
                     

@@ -23,7 +23,7 @@ class Document(models.Model):
     emision_date_utc = models.DateTimeField(default=timezone.now, blank=True, null=True)
     name = models.CharField(max_length=250, blank=True, null=True)
     title = models.CharField(max_length=250, blank=True, null=True)
-    leyend = models.CharField(max_length=250, blank=True, null=True)
+    leyend = models.CharField(max_length=250, blank=True, null=True) # Revisar que funcion cumple
     content = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     main_author = models.ForeignKey(AppUser, related_name='main_author', on_delete=models.CASCADE, blank=True, null=True)
@@ -86,6 +86,8 @@ class EGT(Document):
 
 # ACT
 class ACT(Document):
+    code = models.CharField(default='WOCU31 MUHV', max_length=255)
+    no = models.AutoField()
     phenomena = models.ForeignKey(Phenomena, on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
